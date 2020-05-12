@@ -16,27 +16,19 @@ public class Termometro {
     private Lock cerrojo = new ReentrantLock();
     private Condition hay_hueco = cerrojo.newCondition();
     private Condition hay_mensaje = cerrojo.newCondition();
+    private int SIZE = 15;
 
-    
     ArrayList<Double> AL = new ArrayList<Double>(15);
-    
-    private boolean esVacio (ArrayList AL){
-        if (AL.isEmpty()){
-            return true;
-        } else {
-            return false;
-        }
-    }
-    
+
     private boolean esLleno (ArrayList AL){
-        if (AL.size() == 15){
+        if (AL.size() == SIZE){
             return true;
         }else{
             return false;
         }
     }
 
-    public void enviaMensaje(double num, String Productor) {
+    public void enviaMensaje(double num) {
         try {
             cerrojo.lock();
             while (esLleno(AL)) {
@@ -46,7 +38,7 @@ public class Termometro {
                 }
             }
             AL.add(num);
-            System.out.println(Productor+" genera "+ num);
+            System.out.println("Productor genera " + num);
             hay_mensaje.signalAll();
         } finally {
             cerrojo.unlock();
@@ -57,7 +49,7 @@ public class Termometro {
         double mensaje;
         try {
             cerrojo.lock();
-            while (esVacio(AL)) {
+            while (AL.isEmpty()) {
                 try {
                     hay_mensaje.await(); // espera a que le manden una señal
                 } catch (Exception e) {

@@ -9,11 +9,10 @@ package Ejercicio2;
 
 public class Consumidor extends Thread
 {
-    private int numMensajes;
     private Termometro termometro;
     private String nombre;
 
-    public Consumidor(Termometro termometro, String nombre)
+    public Consumidor(Termometro termometro)
     {
         this.termometro=termometro;
         this.nombre=nombre;
@@ -28,7 +27,7 @@ public class Consumidor extends Thread
             {
                 sleep((int)(300 + 400*Math.random()));
             } catch(InterruptedException e){ }
-                System.out.println(nombre+" ha leído "+ termometro.recibeMensaje());
+                System.out.println("Lector ha leído " + termometro.recibeMensaje());
         }
     }
 }

@@ -10,8 +10,8 @@ public class PruebaTermometro
     public static void main(String[] s)
     {
         Termometro termometro = new Termometro();
-        Productor Sensor = new Productor("Sensor",15,termometro);
-        Consumidor Display = new Consumidor(termometro, "Display");
+        Productor Sensor = new Productor(15,termometro);
+        Consumidor Display = new Consumidor(termometro);
         Sensor.start();
         Display.start();
     }

@@ -14,18 +14,18 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author cesar
  */
 public class termometro {
-    float temperatura;
+    float temp;
     Lock l = new ReentrantLock();
     
     public termometro (float temperatura){
-        this.temperatura = temperatura;
+        this.temp = temp;
     }
     
-    public void insertart(float t) throws InterruptedException{
+    public void insertart(float temperatura) throws InterruptedException{
         l.lock();
         try{
             sleep( 100 + (int)(200*Math.random()));
-            temperatura = t;
+            temp = temperatura;
         }catch(InterruptedException e){
         }
         finally{
@@ -38,7 +38,7 @@ public class termometro {
         l.lock();
         try{
             sleep( 100 + (int)(200*Math.random()));
-            System.out.println("temperatura= " + temperatura);
+            System.out.println("temperatura= " + temp);
         }catch(InterruptedException e){
         }
         finally{

@@ -5,8 +5,7 @@
  */
 package ejercicio1;
 
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+
 
 /**
  *
@@ -14,7 +13,6 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class meter_ta extends Thread {
     float temperatura;
-    Lock l1= new ReentrantLock();
     termometro t1;
     
     public meter_ta (float t, termometro t1){
