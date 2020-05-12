@@ -5,8 +5,6 @@
  */
 package ejercicio1;
 
-
-
 /**
  *
  * @author cesar
