@@ -17,9 +17,8 @@ public class Termometro {
     private Condition hay_hueco = cerrojo.newCondition();
     private Condition hay_mensaje = cerrojo.newCondition();
 
-    private boolean hayMensaje = false;
     
-    ArrayList AL = new ArrayList(15);
+    ArrayList<Double> AL = new ArrayList<Double>(15);
     
     private boolean esVacio (ArrayList AL){
         if (AL.isEmpty()){
@@ -37,7 +36,7 @@ public class Termometro {
         }
     }
 
-    public void enviaMensaje(String num, String Productor) {
+    public void enviaMensaje(double num, String Productor) {
         try {
             cerrojo.lock();
             while (esLleno(AL)) {
@@ -54,8 +53,8 @@ public class Termometro {
         }
     }
 
-    public String recibeMensaje() {
-        String mensaje;
+    public double recibeMensaje() {
+        double mensaje;
         try {
             cerrojo.lock();
             while (esVacio(AL)) {
@@ -64,7 +63,7 @@ public class Termometro {
                 } catch (Exception e) {
                 }
             }
-            mensaje = (String)AL.get(0);
+            mensaje = AL.get(0);
             AL.remove(0);   
             hay_hueco.signalAll();
             return mensaje;
