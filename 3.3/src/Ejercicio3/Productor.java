@@ -18,23 +18,22 @@ public class Productor extends Thread {
         numMensajes = n;
         this.termometro = termometro;
     }
-    
+
     private double generateRandomNumber() {
-    	return Math.random() * 30;
+        return Math.random() * 30;
     }
-    
+
     public void run() {
-    	double num;
-    	for (int i = 1; i <= numMensajes; i++) {
-    		try {
-				sleep((int) (200 + 600 * Math.random()));
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-    		termometro.escritores(generateRandomNumber(), prefijo);
-    		
-    	}
+        for (int i = 1; i <= numMensajes; i++) {
+            try {
+                sleep((int) (200 + 600 * Math.random()));
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            termometro.escritores(generateRandomNumber(), prefijo);
+
+        }
     }
 
 }

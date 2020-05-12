@@ -21,7 +21,7 @@ public class Termometro {
 
     public Termometro() {
         try {
-            semaphoreLectores.acquire(lectores);
+            semaphoreLectores.acquire(lectores); //PRIMERO SATURAMOS EL SEMAFORO DE LECTORES, YA QUE AL PRINCIPIO NO HYA CONTENIDO
         } catch (InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -74,7 +74,6 @@ public class Termometro {
         try {
             semaphoreLectores.acquire(); 
             leido = leer();
-
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
