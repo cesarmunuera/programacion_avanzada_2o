@@ -5,12 +5,11 @@
  */
 package Ejercicio4;
 
-public class PruebaTermometro
-{
-    public static void main(String[] s)
-    {
+public class PruebaTermometro {
+
+    public static void main(String[] s) {
         Termometro termometro = new Termometro();
-        Productor Sensor = new Productor("Sensor",15,termometro);
+        Productor Sensor = new Productor("Sensor", 15, termometro);
         Consumidor Display = new Consumidor(termometro, "Display");
         Sensor.start();
         Display.start();

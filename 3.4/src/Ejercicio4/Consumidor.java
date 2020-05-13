@@ -7,27 +7,24 @@
  */
 package Ejercicio4;
 
-public class Consumidor extends Thread
-{
+public class Consumidor extends Thread {
+
     private Termometro termometro;
     private String nombre;
 
-    public Consumidor(Termometro termometro, String nombre)
-    {
-        this.termometro=termometro;
-        this.nombre=nombre;
+    public Consumidor(Termometro termometro, String nombre) {
+        this.termometro = termometro;
+        this.nombre = nombre;
     }
 
     @Override
-    public void run()
-    {
-        while (true)
-        {
-            try
-            {
-                sleep((int)(300 + 400*Math.random()));
-            } catch(InterruptedException e){ }
-                System.out.println(nombre+" ha leído "+ termometro.recibeMensaje());
+    public void run() {
+        while (true) {
+            try {
+                sleep((int) (300 + 400 * Math.random()));
+            } catch (InterruptedException e) {
+            }
+            System.out.println(nombre + " ha leído " + termometro.recibeMensaje());
         }
     }
 }

@@ -20,13 +20,9 @@ public class AtomicBigInteger extends Number {
 
     AtomicInteger i;
 
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 2312525508327637250L;
-
     private AtomicReference<BigInteger> bigInt;
-
     private static final BigInteger ONE = new BigInteger("1");
     private static final BigInteger NEGATIVE_ONE = new BigInteger("-1");
 

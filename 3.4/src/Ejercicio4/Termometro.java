@@ -12,14 +12,13 @@ import java.util.ArrayList;
 public class Termometro {
 
     private static int SIZE = 10;
-    private ArrayList buffer = new ArrayList(SIZE);
+    private ArrayList<Double> buffer = new ArrayList<Double>(SIZE);
 
-    
     public void printBuffer() {
         System.out.println("Memory: " + buffer.toString());
     }
 
-    public synchronized void enviaMensaje(String num, String Productor) {
+    public synchronized void enviaMensaje(double num, String Productor) {
         while (buffer.size() == SIZE) {
             try {
                 wait();
@@ -32,15 +31,15 @@ public class Termometro {
         notifyAll();
     }
 
-    public synchronized String recibeMensaje() {
-        String mensaje;
+    public synchronized double recibeMensaje() {
+        double mensaje;
         while (buffer.isEmpty()) {
             try {
                 wait();
             } catch (Exception e) {
             }
         }
-        mensaje = (String) buffer.get(0);
+        mensaje = buffer.get(0);
         buffer.remove(0);
         notifyAll();
         return mensaje;

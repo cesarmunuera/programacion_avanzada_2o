@@ -20,17 +20,14 @@ public class Productor extends Thread {
     }
 
     public void run() {
-        int num = 0;
-        String numS = "";
+        double num = 0;
         for (int i = 1; i <= numMensajes; i++) {
             try {
-                num = (int) (Math.random() * 30);
-                
-                numS = num + "";
+                num = (Math.random() * 30);
                 sleep((int) (200 + 600 * Math.random()));
             } catch (InterruptedException e) {
             }
-            termometro.enviaMensaje(numS, prefijo);
+            termometro.enviaMensaje(num, prefijo);
         }
     }
 

@@ -2,7 +2,6 @@
 // dividiendo la tarea en cinco hilos
 package ej2bloque4;
 
-import java.util.*;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 

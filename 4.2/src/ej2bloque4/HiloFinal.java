@@ -48,7 +48,8 @@ public class HiloFinal extends Thread {
         BigInteger rb5 = r5.getSuma();
          System.out.println("suma del resultado 5");
 
-        rb1 = rb1.add(rb2.add(rb5).add(rb4).add(rb3));
+        //rb1 = rb1.add(rb2.add(rb5).add(rb4).add(rb3));
+        rb1 = rb1.add(rb2).add(rb5).add(rb4).add(rb3);
         System.out.println("final de la funcion de sum");
         return rb1;
 
