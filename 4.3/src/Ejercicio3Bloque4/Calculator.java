@@ -2,31 +2,30 @@
 package Ejercicio3Bloque4;
 
 public class Calculator extends Thread {
-    
+
     int from, to;
-    
-    public Calculator(int x, int y){
-        from=x;
-        to=y;
+
+    public Calculator(int x, int y) {
+        from = x;
+        to = y;
     }
-    
-    public void run(){
-        for (int i=from; i<=to; i++)
-        {
-            if(esPrimo(i))
-            {
-                System.out.println("El número: " +i+ " es primo.");
+
+    public void run() {
+        for (int i = from; i <= to; i++) {
+            if (esPrimo(i)) {
+                System.out.println("El número: " + i + " es primo.");
             }
         }
     }
-    private boolean esPrimo(int n){
+
+    private boolean esPrimo(int n) {
         int raiz = (int) Math.sqrt((double) n);
         boolean primo = true;
-        int i=2;
-        while(primo && i<=raiz)
-        {
-            if (n % i == 0)
-                primo=false;
+        int i = 2;
+        while (primo && i <= raiz) {
+            if (n % i == 0) {
+                primo = false;
+            }
             i++;
         }
         return primo;

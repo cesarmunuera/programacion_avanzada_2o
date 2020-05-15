@@ -1,6 +1,5 @@
 package UDP;
 
-
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -48,8 +47,8 @@ public class Client {
 
             //Cojo los datos y lo muestro
             mensaje = new String(peticion.getData());
-            System.out.println("La respuesta esperada es: " +respuestaEsperada);
-            System.out.println("La respuesta del servidor es: " +mensaje);
+            System.out.println("La respuesta esperada es: " + respuestaEsperada);
+            System.out.println("La respuesta del servidor es: " + mensaje);
 
             //cierro el socket
             socketUDP.close();
@@ -65,4 +64,3 @@ public class Client {
     }
 
 }
-

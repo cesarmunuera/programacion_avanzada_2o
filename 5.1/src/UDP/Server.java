@@ -23,8 +23,8 @@ public class Server {
             while (true) {
 
                 //Preparo la respuesta
-                
                 DatagramPacket paquete =new DatagramPacket(buffer, buffer.length);
+                
                 //Recibo el datagrama
                 socketUDP.receive(paquete);
                 System.out.println("Recibo la informacion del cliente");

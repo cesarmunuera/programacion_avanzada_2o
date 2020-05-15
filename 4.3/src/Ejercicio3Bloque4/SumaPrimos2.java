@@ -2,7 +2,6 @@
 // dividiendo la tarea en cinco hilos
 package Ejercicio3Bloque4;
 
-import java.util.*;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -16,8 +15,10 @@ public class SumaPrimos2 {
         rellenarl1(l1);
         rellenarl2(l2);
 
-        ExecutorService executor = Executors.newFixedThreadPool(10);
-
+        ExecutorService executor = Executors.newFixedThreadPool(10); //Asignamos que el pool va a ser de 10 hilos.
+        
+        // Vamos creando tareas de tipo calculadora, para que los 10 hilos puestos en el pool, las vayan usando 
+        // segun acaben la anterior.
         for (int i = 0; i < 100; i++) { //10.000.000 entre 100.000 es 100, por tanto 100 tareas (0-99)
             Calculator tarea = new Calculator(l1.get(i), l2.get(i));
             executor.execute(tarea);
@@ -29,6 +30,8 @@ public class SumaPrimos2 {
         }
     }
 
+    // En estas funciones, vamos a rellenar 2 AL. Lo hacemos porque necesitamos las posiciones de inicio y de
+    // fin de cada tarea que van a realizar los hilos.
     private static void rellenarl1(ArrayList l1) { // AL con las posiciones de inicio de cada tarea
         l1.add(0, 1);
         for (int i = 1; i < 100; ++i) {

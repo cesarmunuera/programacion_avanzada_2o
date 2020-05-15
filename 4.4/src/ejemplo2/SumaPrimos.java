@@ -33,7 +33,7 @@ public class SumaPrimos {
 
         executor.shutdown();
 
-        for (int i = 0; i < ALFuture.size(); i++) { 
+        for (int i = 0; i < ALFuture.size(); i++) {
             Future<BigInteger> result = ALFuture.get(i); // Saco del AL las tareas
             resultadoFB = result.get();                  // De cada tarea, saco su correspondiente resultado
             finalResult = add(finalResult, resultadoFB); // Lo voy almacenando en un contador
