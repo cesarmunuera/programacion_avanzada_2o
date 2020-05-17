@@ -1,6 +1,5 @@
 package UDP;
 
-
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -20,6 +19,7 @@ public class Client {
 
         try {
             System.out.println("Iniciado cliente UDP");
+            
             //Obtengo la localizacion de localhost
             InetAddress direccionServidor = InetAddress.getByName("localhost");
 
@@ -28,6 +28,8 @@ public class Client {
 
             //YEAR - MONTH - DAY
             String mensaje = "2000,01,01";
+            
+            //Calculamos cuanto nos tendria que dar, a forma de testeo
             String respuestaEsperada = Operator.operation(mensaje);
 
             //Convierto el mensaje a bytes
@@ -41,18 +43,18 @@ public class Client {
             socketUDP.send(pregunta);
 
             //Preparo la respuesta
-            DatagramPacket peticion = new DatagramPacket(buffer, buffer.length);
+            DatagramPacket respuesta = new DatagramPacket(buffer, buffer.length);
 
             //Recibo la respuesta
-            socketUDP.receive(peticion);
+            socketUDP.receive(respuesta);
             System.out.println("Recibo la peticion");
 
             //Cojo los datos y lo muestro
-            String age = new String(peticion.getData(), 0,peticion.getLength());
+            String age = new String(respuesta.getData(), 0, respuesta.getLength());
             System.out.println("La edad esperada es: " + respuestaEsperada);
-            System.out.println("Server said u r " + age + " years old");
+            System.out.println("Server said you are " + age + " years old");
 
-            //cierro el socket
+            //Cierro el socket
             socketUDP.close();
 
         } catch (SocketException ex) {
@@ -66,4 +68,3 @@ public class Client {
     }
 
 }
-

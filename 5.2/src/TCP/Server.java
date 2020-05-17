@@ -3,7 +3,6 @@ import java.io.*;
 import java.net.*;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Date;
 
 public class Server                                                             //ADVERTENCIA!!!!!! SI TE SALTA ERROR ES POR EL PUERTO. 
 {                                                                               //CAMBIALO A UNO QUE NO HAYAS USADO O REINICIA NETBEANS
@@ -17,8 +16,7 @@ public class Server                                                             
         int day,month,year;
         
         try
-        {
-            
+        { 
             servidor = new ServerSocket(5087);                                  // Creamos un ServerSocket en el puerto 5000
             System.out.println("Servidor Arrancado....");
             
@@ -38,8 +36,8 @@ public class Server                                                             
                 LocalDate fechaHoy = LocalDate.now();
                 Period respuestaP = Period.between(fecha,fechaHoy);
                 int respuesta = respuestaP.getYears();
-                
                 salida.writeInt(respuesta);                                     // Le respondemos
+                
                 conexion.close();                                               // Y cerramos la conexión
             }
         } catch (IOException e) {

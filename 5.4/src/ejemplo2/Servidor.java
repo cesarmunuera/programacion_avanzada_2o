@@ -1,21 +1,18 @@
 package ejemplo2;
+
 import java.rmi.*;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
- 
-public class Servidor
-{ 
-    public static void main(String args[])
-    {
-        try
-        {
+
+public class Servidor {
+
+    public static void main(String args[]) {
+        try {
             Calculador obj = new Calculador(); //Crea una instancia del objeto que implementa la interfaz, como objeto a registrar 
             Registry registry = LocateRegistry.createRegistry(1099); //Arranca rmiregistry local en el puerto 1099
-            Naming.rebind("//localhost/ObjetoSaluda",obj);   //rebind sólo funciona sobre una url del equipo local 
+            Naming.rebind("//localhost/ObjetoFecha", obj);   //rebind sólo funciona sobre una url del equipo local 
             System.out.println("El Objeto Saluda ha quedado registrado");
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             System.out.println(" Error: " + e.getMessage());
             e.printStackTrace();
         }

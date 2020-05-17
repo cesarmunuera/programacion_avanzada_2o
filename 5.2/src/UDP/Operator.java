@@ -13,7 +13,7 @@ public class Operator {
         int año = Integer.parseInt(stringNumbers[0]);
         int mes = Integer.parseInt(stringNumbers[1]);
         int dia = Integer.parseInt(stringNumbers[2]);
-        
+
         LocalDate fecha = LocalDate.of(año, mes, dia);
         LocalDate fechaHoy = LocalDate.now();
         Period respuestaP = Period.between(fecha, fechaHoy);

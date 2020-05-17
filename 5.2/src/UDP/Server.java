@@ -23,8 +23,8 @@ public class Server {
             while (true) {
 
                 //Preparo la respuesta
+                DatagramPacket paquete = new DatagramPacket(buffer, buffer.length);
                 
-                DatagramPacket paquete =new DatagramPacket(buffer, buffer.length);
                 //Recibo el datagrama
                 socketUDP.receive(paquete);
                 System.out.println("Recibo la informacion del cliente");
@@ -39,10 +39,10 @@ public class Server {
                 InetAddress direccion = paquete.getAddress();
 
                 String s = Operator.operation(mensaje);
-                System.out.println("La respuesta del servidor es: " +s);
+                System.out.println("La respuesta del servidor es: " + s);
                 buffer = s.getBytes();
 
-                //creo el datagrama
+                //Creo el datagrama
                 DatagramPacket respuesta = new DatagramPacket(buffer, buffer.length, direccion, puertoCliente);
 
                 //Envio la información
