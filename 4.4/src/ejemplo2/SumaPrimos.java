@@ -36,7 +36,7 @@ public class SumaPrimos {
         for (int i = 0; i < ALFuture.size(); i++) {
             Future<BigInteger> result = ALFuture.get(i); // Saco del AL las tareas
             resultadoFB = result.get();                  // De cada tarea, saco su correspondiente resultado
-            finalResult = add(finalResult, resultadoFB); // Lo voy almacenando en un contador
+            finalResult = sum(finalResult, resultadoFB); // Lo voy almacenando en un contador
         }
         System.out.println("La suma de los numeros primos del 1 al 10.000.000 es: " + finalResult.toString());
     }
@@ -55,7 +55,7 @@ public class SumaPrimos {
         }
     }
 
-    private static BigInteger add(BigInteger n1, BigInteger n2) {
+    private static BigInteger sum(BigInteger n1, BigInteger n2) {
         return n1.add(n2);
     }
 }

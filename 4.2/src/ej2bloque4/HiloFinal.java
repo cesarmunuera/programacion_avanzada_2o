@@ -9,7 +9,7 @@ import java.math.BigInteger;
 
 /**
  *
- * @author 
+ * @author
  */
 public class HiloFinal extends Thread {
 
@@ -29,12 +29,12 @@ public class HiloFinal extends Thread {
         try {
             System.out.println("......");
             BigInteger result = sum();
-            
+
             System.out.println("The final result is: " + result + " ");
         } catch (Exception e) {
         }
     }
-    
+
     private BigInteger sum() {
         System.out.println("funcion de sum");
         BigInteger rb1 = r1.getSuma();
@@ -44,11 +44,10 @@ public class HiloFinal extends Thread {
         BigInteger rb3 = r3.getSuma();
         System.out.println("suma del resultado 3");
         BigInteger rb4 = r4.getSuma();
-         System.out.println("suma del resultado 4");
+        System.out.println("suma del resultado 4");
         BigInteger rb5 = r5.getSuma();
-         System.out.println("suma del resultado 5");
+        System.out.println("suma del resultado 5");
 
-        //rb1 = rb1.add(rb2.add(rb5).add(rb4).add(rb3));
         rb1 = rb1.add(rb2).add(rb5).add(rb4).add(rb3);
         System.out.println("final de la funcion de sum");
         return rb1;

@@ -72,7 +72,7 @@ public class Termometro {
     public double lectores() {
         double leido = -999.99;
         try {
-            semaphoreLectores.acquire(); 
+            semaphoreLectores.acquire();
             leido = leer();
         } catch (Exception e) {
             e.printStackTrace();

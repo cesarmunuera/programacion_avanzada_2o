@@ -57,7 +57,7 @@ public class Exposicion {
     /**
      * A diferencia de la Sesión 5, lo que he añadio es un lock para que tome el
      * recurso cuando entre, y la condition para cuando se le de a reanudar. Al
-     * final, el sem�foro reduce una posición de su capacidad, para evitar que
+     * final, el semaforo reduce una posición de su capacidad, para evitar que
      * exceda la capacidad.
      *
      * @param v

@@ -14,21 +14,21 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author cesar
  */
 public class sacar_ta extends Thread {
-   float temperatura;
-    Lock l1= new ReentrantLock();
+
+    float temperatura;
     termometro t1;
-    
-    public sacar_ta (float t, termometro t1){
+
+    public sacar_ta(float t, termometro t1) {
         this.temperatura = t;
         this.t1 = t1;
     }
-    
-    public void run(){
-        while(true){
-            try{
-                sleep(100 + (int)(200 *Math.random()));
+
+    public void run() {
+        while (true) {
+            try {
+                sleep(100 + (int) (200 * Math.random()));
                 t1.sacart();
-            }catch (Exception e){
+            } catch (Exception e) {
             }
         }
     }

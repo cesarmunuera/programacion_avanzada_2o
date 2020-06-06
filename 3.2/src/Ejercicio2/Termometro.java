@@ -6,6 +6,7 @@
  * para que puedan continuar intentando su acción.
  */
 package Ejercicio2;
+
 import java.util.ArrayList;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
@@ -20,18 +21,10 @@ public class Termometro {
 
     ArrayList<Double> AL = new ArrayList<Double>(15);
 
-    private boolean esLleno (ArrayList AL){
-        if (AL.size() == SIZE){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
     public void enviaMensaje(double num) {
         try {
             cerrojo.lock();
-            while (esLleno(AL)) {
+            while (AL.size() == SIZE) {
                 try {
                     hay_hueco.await(); // espera a que le manden una señal
                 } catch (Exception e) {
@@ -56,7 +49,7 @@ public class Termometro {
                 }
             }
             mensaje = AL.get(0);
-            AL.remove(0);   
+            AL.remove(0);
             hay_hueco.signalAll();
             return mensaje;
         } finally {

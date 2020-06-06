@@ -65,7 +65,7 @@ public class ControlServer extends Thread { // Clase servidor
     }
 
     /**
-     * Función que calcula si la cola est� llena
+     * Función que calcula si la cola esta llena
      *
      * @return
      */

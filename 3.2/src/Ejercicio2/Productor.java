@@ -9,12 +9,10 @@ package Ejercicio2;
 
 public class Productor extends Thread {
 
-    //private String prefijo;
     private int numMensajes;
     private Termometro termometro;
 
     public Productor(int n, Termometro termometro) {
-        //this.prefijo = prefijo;
         numMensajes = n;
         this.termometro = termometro;
     }
@@ -27,7 +25,6 @@ public class Productor extends Thread {
                 sleep((int) (200 + 600 * Math.random()));
             } catch (InterruptedException e) {
             }
-            //termometro.enviaMensaje(num, prefijo);
             termometro.enviaMensaje(num);
         }
     }

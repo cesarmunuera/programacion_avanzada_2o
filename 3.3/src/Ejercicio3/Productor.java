@@ -28,7 +28,6 @@ public class Productor extends Thread {
             try {
                 sleep((int) (200 + 600 * Math.random()));
             } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
             termometro.escritores(generateRandomNumber(), prefijo);

@@ -37,7 +37,7 @@ public class ControlModule { // Clase cliente
     }
 
     /**
-     * Funci�n que envía y recibe mensajes del servidor.
+     * Funcion que envía y recibe mensajes del servidor.
      *
      * @param msg
      * @return
