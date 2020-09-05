@@ -30,19 +30,19 @@ public class Server {
                 System.out.println("Recibo la informacion del cliente");
 
                 //Convierto lo recibido y mostrar el mensaje
-                String mensaje = new String(paquete.getData());
-                System.out.println("Mensaje recibido del cliente: " +mensaje);
+                String mensajeRecibido = new String(paquete.getData());
+                System.out.println("Mensaje recibido del cliente: " + mensajeRecibido);
 
                 //Obtengo el puerto y la direccion de origen
                 //Sino se quiere responder, no es necesario
                 int puertoCliente = paquete.getPort();
                 InetAddress direccion = paquete.getAddress();
 
-                mensaje = Operator.operation(mensaje);
-                buffer = mensaje.getBytes();
-                System.out.println("El resultado de la operación es: " + mensaje);
+                String mensajeAEnviar = Operator.operation(mensajeRecibido);
+                buffer = mensajeAEnviar.getBytes();
+                System.out.println("El resultado de la operación es: " + mensajeAEnviar);
 
-                //creo el datagrama
+                //Creo el datagrama
                 DatagramPacket respuesta = new DatagramPacket(buffer, buffer.length, direccion, puertoCliente);
 
                 //Envio la información

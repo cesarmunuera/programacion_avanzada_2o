@@ -13,6 +13,7 @@ public class Client {
         int day, month, year, result;
         try {
             cliente = new Socket(InetAddress.getLocalHost(), 5087);             //Creamos el socket para conectarnos al puerto 5000 del servidor
+            
             entrada = new DataInputStream(cliente.getInputStream());            //Creamos los canales de entrada/salida
             salida = new DataOutputStream(cliente.getOutputStream());
 
@@ -23,6 +24,7 @@ public class Client {
             salida.writeInt(day);                                               // Enviamos un mensaje al servidor
             salida.writeInt(month);
             salida.writeInt(year);
+            
             result = entrada.readInt();                                         // Leemos la respuesta
             System.out.println("Server said you are " + result + " years old");
             

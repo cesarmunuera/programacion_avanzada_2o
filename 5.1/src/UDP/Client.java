@@ -25,6 +25,7 @@ public class Client {
             DatagramSocket socketUDP = new DatagramSocket();
 
             String numeros = "3,2";
+            
             String respuestaEsperada = Operator.operation(numeros);
             String mensaje = numeros;
 
@@ -32,25 +33,25 @@ public class Client {
             buffer = mensaje.getBytes();
 
             //Creo un datagrama
-            DatagramPacket pregunta = new DatagramPacket(buffer, buffer.length, direccionServidor, PUERTO_SERVIDOR);
+            DatagramPacket datagramaEnvio = new DatagramPacket(buffer, buffer.length, direccionServidor, PUERTO_SERVIDOR);
 
             //Lo envio con send
             System.out.println("Envio el datagrama");
-            socketUDP.send(pregunta);
+            socketUDP.send(datagramaEnvio);
 
             //Preparo la respuesta
-            DatagramPacket peticion = new DatagramPacket(buffer, buffer.length);
+            DatagramPacket datagramaRespuesta = new DatagramPacket(buffer, buffer.length);
 
             //Recibo la respuesta
-            socketUDP.receive(peticion);
+            socketUDP.receive(datagramaRespuesta);
             System.out.println("Recibo la peticion");
 
             //Cojo los datos y lo muestro
-            mensaje = new String(peticion.getData());
+            mensaje = new String(datagramaRespuesta.getData());
             System.out.println("La respuesta esperada es: " + respuestaEsperada);
             System.out.println("La respuesta del servidor es: " + mensaje);
 
-            //cierro el socket
+            //Cierro el socket
             socketUDP.close();
 
         } catch (SocketException ex) {

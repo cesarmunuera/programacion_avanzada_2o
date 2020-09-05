@@ -8,9 +8,9 @@ public class Servidor {
 
     public static void main(String args[]) {
         try {
-            Calculador obj = new Calculador(); //Crea una instancia del objeto que implementa la interfaz, como objeto a registrar 
-            Registry registry = LocateRegistry.createRegistry(1099); //Arranca rmiregistry local en el puerto 1099
-            Naming.rebind("//localhost/ObjetoFecha", obj);   //rebind sólo funciona sobre una url del equipo local 
+            Calculador obj = new Calculador();                      //Crea una instancia del objeto que implementa la interfaz, como objeto a registrar 
+            Registry registry = LocateRegistry.createRegistry(1099);//Arranca rmiregistry local en el puerto 1099
+            Naming.rebind("//localhost/ObjetoFecha", obj);          //Rebind sólo funciona sobre una url del equipo local 
             System.out.println("El Objeto Saluda ha quedado registrado");
         } catch (Exception e) {
             System.out.println(" Error: " + e.getMessage());

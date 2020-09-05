@@ -12,11 +12,12 @@ public class Client {
             int n2 = 3;
 
             InterfaceCalcula obj = (InterfaceCalcula) Naming.lookup("//127.0.0.1/ObjetoCalcula"); //Localiza el objeto distribuido
-            respuesta = obj.multiplicar(n1, n2);                                                           //Llama al método saludar
+            
+            respuesta = obj.multiplicar(n1, n2);                                                  //Llama al método saludar
             System.out.println("El resultado de multiplicar " + n1 + " * " + n2 + " = " + respuesta);
             sleep(2000);                                        //Para que dé tiempo a leer la respuesta antes de que se cierre la ventana
 
-            respuesta = obj.elevar(n1, n2);                                                           //Llama al método saludar
+            respuesta = obj.elevar(n1, n2);                                                        //Llama al método saludar
             System.out.println("El resultado de elevar " + n1 + "^" + n2 + " = " + respuesta);
             sleep(2000);                                        //Para que dé tiempo a leer la respuesta antes de que se cierre la ventana
         } catch (Exception e) {

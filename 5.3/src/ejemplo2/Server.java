@@ -1,9 +1,8 @@
 package ejemplo2;
 
 import java.rmi.*;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;                                              //ADVERTENCIA!!!!!! SI NO TE EJECUTA, TIENES QUE CERRAR NETBEANS Y VOLVERLO A ABRIR
-                                                                                // ESTO SE DEBE A QUE IGUAL HAS USADO EL PUERTO 1099 ANTES. TIENES QUE REINICIAR NETBEANS
+import java.rmi.registry.LocateRegistry;                                        //ADVERTENCIA!!!!!! SI NO TE EJECUTA, TIENES QUE CERRAR NETBEANS Y VOLVERLO A ABRIR
+import java.rmi.registry.Registry;                                              // ESTO SE DEBE A QUE IGUAL HAS USADO EL PUERTO 1099 ANTES. TIENES QUE REINICIAR NETBEANS                                                   
 
 public class Server {
 
