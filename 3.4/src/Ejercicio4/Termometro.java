@@ -1,10 +1,10 @@
-/*
- * La clase Termometro tiene que estar protegida con un cerrojo
+/*La clase Termometro tiene que estar protegida con un cerrojo
  * El método enviaMensaje debe esperar si el buzón está lleno
  * El método recibeMensaje debe esperar si el buzón está vacío.
  * Cuando un hilo completa su operación, desbloquea a los que estén esperando
  * para que puedan continuar intentando su acción.
  */
+
 package Ejercicio4;
 
 import java.util.ArrayList;

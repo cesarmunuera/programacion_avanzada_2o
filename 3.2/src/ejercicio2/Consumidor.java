@@ -1,11 +1,6 @@
-/*
- * La clase Consumidor define hilos que leen mensajes de un buzón de mensajes
- * y los muestran por pantalla.
- * El buzón y el número de mensajes, los reciben como parámetros del constructor
- * antes de terminar.
- * Entre lectura y lectura, esperan un tiempo aleatorio entre 0.5 y 1 seg.
- */
-package Ejercicio2;
+package ejercicio2;
+
+import static java.lang.Thread.sleep;
 
 public class Consumidor extends Thread {
 
@@ -28,3 +23,4 @@ public class Consumidor extends Thread {
         }
     }
 }
+

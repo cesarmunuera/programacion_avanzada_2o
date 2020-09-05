@@ -1,10 +1,10 @@
-/*
- * La clase Consumidor define hilos que leen mensajes de un buzón de mensajes
+/* La clase Consumidor define hilos que leen mensajes de un buzón de mensajes
  * y los muestran por pantalla.
  * El buzón y el número de mensajes, los reciben como parámetros del constructor
  * antes de terminar.
  * Entre lectura y lectura, esperan un tiempo aleatorio entre 0.5 y 1 seg.
  */
+
 package Ejercicio3;
 
 public class Consumidor extends Thread {

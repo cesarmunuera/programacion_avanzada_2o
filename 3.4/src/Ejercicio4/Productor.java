@@ -1,10 +1,10 @@
-/*
- * La clase Productor define hilos que envían mensajes a un buzón de mensajes.
+/*La clase Productor define hilos que envían mensajes a un buzón de mensajes.
  * Los mensajes constan de un prefijo String y un sufijo que es un entero del 1 al 5
  * El prefijo, el número de mensajes a escribir y el buzón donde hacerlo,
  *  se reciben como parámetros en el constructor.
  * Entre mensaje y mensaje, esperan un tiempo aleatorio entre 0.5 y 1 seg.
  */
+
 package Ejercicio4;
 
 public class Productor extends Thread {

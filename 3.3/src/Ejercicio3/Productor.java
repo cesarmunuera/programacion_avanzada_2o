@@ -5,6 +5,7 @@
  *  se reciben como parámetros en el constructor.
  * Entre mensaje y mensaje, esperan un tiempo aleatorio entre 0.5 y 1 seg.
  */
+
 package Ejercicio3;
 
 public class Productor extends Thread {
