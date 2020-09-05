@@ -20,24 +20,24 @@ import application.user.ChildUser;
 
 public class AquaticPark implements AquaticParkInterface, Serializable {
 
-	private static final long serialVersionUID = 1L;
-	private String identificator = ApplicationGlobalConfig.PARK_IDENTIFICATOR;
+    private static final long serialVersionUID = 1L;
+    private String identificator = ApplicationGlobalConfig.PARK_IDENTIFICATOR;
     private Semaphore semaphore = new Semaphore(ApplicationGlobalConfig.TOTAL_USERS_IN_PARK, true);
     private List<BaseActivity> activities = new ArrayList<>();
     private BlockingQueue<User> waitingLine = new ArrayBlockingQueue<>(ApplicationGlobalConfig.TOTAL_CREATED_USERS, true);
     private UserRegistry userRegistry;
 
-	public AquaticPark(UserRegistry userRegistry) {
+    public AquaticPark(UserRegistry userRegistry) {
         this.userRegistry = userRegistry;
         initActivities();
         registerActivity();
     }
 
     private void initActivities() {
-    	MainPoolActivity mainPool = new MainPoolActivity(userRegistry);
-    	this.activities.add(new LockerRoomActivity(userRegistry));
-    	this.activities.add(mainPool);
-    	this.activities.add(new SlideActivity(userRegistry, mainPool));
+        MainPoolActivity mainPool = new MainPoolActivity(userRegistry);
+        this.activities.add(new LockerRoomActivity(userRegistry));
+        this.activities.add(mainPool);
+        this.activities.add(new SlideActivity(userRegistry, mainPool));
         this.activities.add(new DeckChairActivity(userRegistry));
         this.activities.add(new ChildPoolActivity(userRegistry));
         this.activities.add(new WavePoolActivity(userRegistry));
@@ -53,14 +53,14 @@ public class AquaticPark implements AquaticParkInterface, Serializable {
         getRegistry().registerActivity(getIdentificator());
         getRegistry().registerActivityAreas(getIdentificator(), getActivityAreas());
     }
-    
+
     private void randomActivities(int n, List<BaseActivity> activitiesToDo) {
-		while (n > 0) {
-            int i = (int) (((getActivities().size()-1) * Math.random()) + 1);  // skip locker room;
+        while (n > 0) {
+            int i = (int) (((getActivities().size() - 1) * Math.random()) + 1);  // skip locker room;
             activitiesToDo.add(activities.get(i));
             n--;
         }
-	}
+    }
 
     public List<BaseActivity> selectActivities(int n) {
         List<BaseActivity> activitiesToDo = new ArrayList<>();
@@ -78,7 +78,7 @@ public class AquaticPark implements AquaticParkInterface, Serializable {
         getRegistry().registerUserInActivity(getIdentificator(), ApplicationGlobalConfig.ACTIVITY_AREA_WAITING_LINE, user.getIdentificator());
         user.setCurrentActivity(getIdentificator());
     }
-    
+
     private synchronized void goIntoWaitingLine(ChildUser user) {
         getWaitingLine().offer(user);
         getRegistry().registerUserInActivity(getIdentificator(), ApplicationGlobalConfig.ACTIVITY_AREA_WAITING_LINE, user.getIdentificator());
@@ -86,7 +86,7 @@ public class AquaticPark implements AquaticParkInterface, Serializable {
         getWaitingLine().offer(user.getSupervisor());
         getRegistry().registerUserInActivity(getIdentificator(), ApplicationGlobalConfig.ACTIVITY_AREA_WAITING_LINE, user.getSupervisor().getIdentificator());
     }
-    
+
     private synchronized void goOutWaitingLine(User user) {
         getWaitingLine().remove(user);
         getRegistry().unregisterUserFromActivity(identificator, ApplicationGlobalConfig.ACTIVITY_AREA_WAITING_LINE, user.getIdentificator());
@@ -98,28 +98,28 @@ public class AquaticPark implements AquaticParkInterface, Serializable {
         getWaitingLine().remove(user.getSupervisor());
         getRegistry().unregisterUserFromActivity(getIdentificator(), ApplicationGlobalConfig.ACTIVITY_AREA_WAITING_LINE, user.getSupervisor().getIdentificator());
     }
-    
+
     private boolean passFromWaitingLineToActivity(User user) throws InterruptedException {
-    	boolean success = true;
-    	getSemaphore().acquire();
+        boolean success = true;
+        getSemaphore().acquire();
         goOutWaitingLine(user);
-    	return success;
+        return success;
     }
-    
+
     private boolean passFromWaitingLineToActivity(ChildUser user) throws InterruptedException {
-    	boolean success = true;
-    	getSemaphore().acquire(2);
+        boolean success = true;
+        getSemaphore().acquire(2);
         goOutWaitingLine(user);
-    	return success;
+        return success;
     }
-    
+
     public boolean goIn(User user) {
         getRegistry().waitIfProgramIsStopped();
         boolean success = false;
         try {
             goIntoWaitingLine(user);
             success = passFromWaitingLineToActivity(user);
-            
+
         } catch (Exception e) {
             goOutWaitingLine(user);
             user.setCurrentActivity(ApplicationGlobalConfig.PARK_OUTSIDE);
@@ -133,7 +133,7 @@ public class AquaticPark implements AquaticParkInterface, Serializable {
         try {
             goIntoWaitingLine(user);
             success = passFromWaitingLineToActivity(user);
-            
+
         } catch (Exception e) {
             goOutWaitingLine(user);
             user.setCurrentActivity(ApplicationGlobalConfig.PARK_OUTSIDE);
@@ -142,22 +142,22 @@ public class AquaticPark implements AquaticParkInterface, Serializable {
     }
 
     private void onTryGoOut(User user) {
-    	getWaitingLine().remove(user);
-    	getSemaphore().release();
+        getWaitingLine().remove(user);
+        getSemaphore().release();
     }
-    
+
     private void onTryGoOut(ChildUser user) {
-    	getWaitingLine().remove(user);
-    	getSemaphore().release(2);
+        getWaitingLine().remove(user);
+        getSemaphore().release(2);
     }
-    
+
     private void onGoOutSuccess(User user) {
-    	user.setCurrentActivity(ApplicationGlobalConfig.PARK_OUTSIDE);
+        user.setCurrentActivity(ApplicationGlobalConfig.PARK_OUTSIDE);
         getRegistry().removeUser(user);
     }
-    
+
     private void onGoOutSuccess(ChildUser user) {
-    	user.setCurrentActivity(ApplicationGlobalConfig.PARK_OUTSIDE);
+        user.setCurrentActivity(ApplicationGlobalConfig.PARK_OUTSIDE);
         getRegistry().removeUser(user);
         getRegistry().removeUser(user.getSupervisor());
     }
@@ -173,15 +173,15 @@ public class AquaticPark implements AquaticParkInterface, Serializable {
         onTryGoOut(user);
         onGoOutSuccess(user);
     }
-    
+
     public String getIdentificator() {
-    	return this.identificator;
+        return this.identificator;
     }
-    
+
     public UserRegistry getRegistry() {
         return userRegistry;
     }
-    
+
     public Semaphore getSemaphore() {
         return semaphore;
     }
