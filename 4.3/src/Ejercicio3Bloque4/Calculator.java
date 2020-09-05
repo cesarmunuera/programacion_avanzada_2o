@@ -1,4 +1,5 @@
 //Calculador sirve para sumar los números primos que hay en un intervalo (x,y)
+
 package Ejercicio3Bloque4;
 
 public class Calculator extends Thread {
@@ -8,14 +9,6 @@ public class Calculator extends Thread {
     public Calculator(int x, int y) {
         from = x;
         to = y;
-    }
-
-    public void run() {
-        for (int i = from; i <= to; i++) {
-            if (esPrimo(i)) {
-                System.out.println("El número: " + i + " es primo.");
-            }
-        }
     }
 
     private boolean esPrimo(int n) {
@@ -29,5 +22,13 @@ public class Calculator extends Thread {
             i++;
         }
         return primo;
+    }
+
+    public void run() {
+        for (int i = from; i <= to; i++) {
+            if (esPrimo(i)) {
+                System.out.println("El número: " + i + " es primo.");
+            }
+        }
     }
 }

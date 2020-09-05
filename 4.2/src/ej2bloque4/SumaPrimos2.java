@@ -1,5 +1,6 @@
 // SumaPrimos2 calcula la suma de los primos entre 1 y 10.000.000
 // dividiendo la tarea en cinco hilos
+
 package ej2bloque4;
 
 import java.util.concurrent.BrokenBarrierException;

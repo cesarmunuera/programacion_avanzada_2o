@@ -1,4 +1,5 @@
 //Calculador sirve para sumar los números primos que hay en un intervalo (x,y)
+
 package ej2bloque4;
 
 import java.util.concurrent.BrokenBarrierException;
@@ -20,6 +21,19 @@ public class Calculator extends Thread {
         this.id = id;
     }
 
+    private boolean esPrimo(int n) {
+        int raiz = (int) Math.sqrt((double) n);
+        boolean primo = true;
+        int i = 2;
+        while (primo && i <= raiz) {
+            if (n % i == 0) {
+                primo = false;
+            }
+            i++;
+        }
+        return primo;
+    }
+
     public void run() {
         try {
             for (int i = desde; i <= hasta; i++) {
@@ -34,18 +48,5 @@ public class Calculator extends Thread {
         } catch (BrokenBarrierException ex) {
             Logger.getLogger(Calculator.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    private boolean esPrimo(int n) {
-        int raiz = (int) Math.sqrt((double) n);
-        boolean primo = true;
-        int i = 2;
-        while (primo && i <= raiz) {
-            if (n % i == 0) {
-                primo = false;
-            }
-            i++;
-        }
-        return primo;
     }
 }

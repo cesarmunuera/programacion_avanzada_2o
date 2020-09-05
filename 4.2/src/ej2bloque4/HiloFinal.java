@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ej2bloque4;
 
 import java.math.BigInteger;
 
-/**
- *
- * @author
- */
 public class HiloFinal extends Thread {
 
     private Result r1, r2, r3, r4, r5;
@@ -36,21 +27,21 @@ public class HiloFinal extends Thread {
     }
 
     private BigInteger sum() {
-        System.out.println("funcion de sum");
-        BigInteger rb1 = r1.getSuma();
-        System.out.println("suma del resultado 1");
-        BigInteger rb2 = r2.getSuma();
-        System.out.println("suma del resultado 2");
-        BigInteger rb3 = r3.getSuma();
-        System.out.println("suma del resultado 3");
-        BigInteger rb4 = r4.getSuma();
-        System.out.println("suma del resultado 4");
-        BigInteger rb5 = r5.getSuma();
-        System.out.println("suma del resultado 5");
+        System.out.println("Starting final sum() function");
+        BigInteger res1 = r1.getSuma();
+        System.out.println("The sum of 1st result is: " + res1);
+        BigInteger res2 = r2.getSuma();
+        System.out.println("The sum of 2nd result is: " + res2);
+        BigInteger res3 = r3.getSuma();
+        System.out.println("The sum of 3rd result is: " + res3);
+        BigInteger res4 = r4.getSuma();
+        System.out.println("The sum of 4th result is: " + res4);
+        BigInteger res5 = r5.getSuma();
+        System.out.println("The sum of 5th result is: " + res5);
 
-        rb1 = rb1.add(rb2).add(rb5).add(rb4).add(rb3);
-        System.out.println("final de la funcion de sum");
-        return rb1;
+        BigInteger res = res1.add(res2).add(res3).add(res4).add(res5);
+        System.out.println("End sum() function");
+        return res;
 
     }
 }

@@ -1,4 +1,5 @@
 //Calculador sirve para sumar los números primos que hay en un intervalo (x,y)
+
 package ej1bloque4;
 
 public class Calculador extends Thread {
