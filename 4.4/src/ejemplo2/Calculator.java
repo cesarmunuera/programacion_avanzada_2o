@@ -38,7 +38,7 @@ public class Calculator implements Callable<BigInteger> {
         return primo;
     }
 
-    private BigInteger sum(int n, BigInteger result) {
+    private synchronized BigInteger sum(int n, BigInteger result) {
         BigInteger bn = new BigInteger(String.valueOf(n)); // Transformo en numero en un BI
         return result.add(bn);                             // Se lo añado al resultado anterior, como un contador
     }

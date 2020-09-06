@@ -15,6 +15,7 @@ public class SumaPrimos2 {
         Result suma3 = new Result();
         Result suma4 = new Result();
         Result suma5 = new Result();
+        
         HiloFinal hf = new HiloFinal(suma1, suma2, suma3, suma4, suma5);
         CyclicBarrier barrera = new CyclicBarrier(5, hf);
 
